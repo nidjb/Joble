@@ -1,7 +1,6 @@
 import argparse
-
-import requests
 from bs4 import BeautifulSoup
+from security import safe_requests
 
 
 # function to remove random characters from the end of the url if exists
@@ -16,7 +15,7 @@ def get_carrer_page(name):
     query = name.replace(" ", "+")
     URL = f"https://google.com/search?q={query}+carrers"
 
-    resp = requests.get(URL)
+    resp = safe_requests.get(URL)
     if "." in name:
         name = name.split(".")[0]
 
